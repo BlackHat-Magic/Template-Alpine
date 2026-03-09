@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% from "components/_layout.html" import head %}
+    {{ head() }}
+</head>
+<body x-data="app" x-init="init()" class="min-h-screen">
+    {% from "components/_layout.html" import nav, footer %}
+    
+    {% set nav_links = [] %}
+    {{ nav(links=nav_links) }}
+
+    <main class="relative z-10 pt-28 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="font-serif-display text-4xl font-bold mb-6">Welcome</h1>
+            <p class="text-muted-foreground text-lg">Your Alpine.js + Quart project is ready.</p>
+        </div>
+    </main>
+
+    {{ footer() }}
+</body>
+</html>

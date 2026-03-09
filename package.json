@@ -1,0 +1,13 @@
+{
+  "name": "template-alpine",
+  "version": "1.0.0",
+  "description": "Template for Alpine.js + Quart web projects",
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./website/static/css/input.css -o ./website/static/css/style.css --watch",
+    "build": "npx @tailwindcss/cli -i ./website/static/css/input.css -o ./website/static/css/style.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.0.0",
+    "tailwindcss": "^4.0.0"
+  }
+}

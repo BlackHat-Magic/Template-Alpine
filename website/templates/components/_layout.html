@@ -1,0 +1,54 @@
+{% macro head(title="Template") %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css">
+<script defer src="/static/js/app.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+{% endmacro %}
+
+{% macro nav(links=[]) %}
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b-3 site-nav">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <a href="/" class="flex items-center gap-3">
+                <span class="font-sans text-xl font-bold">Template</span>
+            </a>
+            
+            {% if links %}
+            <div class="hidden md:flex items-center gap-8">
+                {% for link in links %}
+                <a href="{{ link.href }}" class="nav-link">{{ link.text }}</a>
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            <div class="flex items-center gap-4">
+                {{ theme_toggle() }}
+            </div>
+        </div>
+    </div>
+</nav>
+{% endmacro %}
+
+{% macro theme_toggle() %}
+<button @click="toggleColorMode()" class="btn-outline px-4 py-2 h-10 text-sm flex items-center gap-2" aria-label="Toggle light/dark mode">
+    <span x-show="!isDark()" x-cloak>Dark</span>
+    <span x-show="isDark()" x-cloak>Light</span>
+</button>
+{% endmacro %}
+
+{% macro footer() %}
+<footer class="border-t-3 py-8 bg-muted-50 mt-16">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center text-muted-foreground">
+            <p class="font-semibold">Built with Alpine.js and Quart</p>
+        </div>
+    </div>
+</footer>
+{% endmacro %}
